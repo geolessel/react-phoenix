@@ -7,6 +7,8 @@ defmodule ReactPhoenix.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package(),
+     description: description(),
      deps: deps()]
   end
 
@@ -18,16 +20,26 @@ defmodule ReactPhoenix.Mixfile do
     [extra_applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
+  def description do
+    """
+    A helper library for easily rendering React components in
+    Phoenix projects.
+    """
+  end
+
   defp deps do
-    []
+    [
+      {:ex_doc, ">= 0.0.0", only: :dev}
+    ]
+  end
+
+  defp package do
+    [
+     name: :react_phoenix,
+     files: ["lib", "mix.exs", "README*", "LICENSE*"],
+     maintainers: ["Geoffrey Lessel"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/geolessel/react-phoenix"}
+    ]
   end
 end
