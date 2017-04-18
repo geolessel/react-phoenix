@@ -12,7 +12,7 @@ by adding `react_phoenix` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.1.0"}]
+  [{:react_phoenix, "~> 0.1.1"}]
 end
 ```
 
@@ -37,19 +37,23 @@ Once that is done, you can use it in your views by:
 1. Making sure that the component you'd like rendered is in the global namespace.
    You can do that in `app.js` like this:
    
-   ```
+   ```javascript
    import MyComponent from "./components/my_component"
    window.Components = {
      MyComponent
    }
    ```
 2. In your view template, you can then render it like this:
-   ```
+
+   ```elixir
    <%= ReactPhoenix.render_component("Components.MyComponent", %{any: "props", you: "need"}) %>
+   # or
+   <%= ReactPhoenix.render_component("Components.MyComponent", any: "props", you: "need") %>
    ```
 3. To save some typing, you can also add `import ReactPhoenix` in the `view`
    section of your web/web.ex file. If you do so, you can just call
-   ```
+
+   ```elixir
    <%= render_component(...) %>
    ```
 
