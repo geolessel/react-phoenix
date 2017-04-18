@@ -29,7 +29,9 @@ defmodule ReactPhoenix.Mixfile do
 
   defp deps do
     [
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:phoenix_html, "~> 2.9"},
+      {:poison, "~> 2.2.0"}
     ]
   end
 

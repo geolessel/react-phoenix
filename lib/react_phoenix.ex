@@ -3,16 +3,10 @@ defmodule ReactPhoenix do
   Documentation for ReactPhoenix.
   """
 
-  @doc """
-  Hello world.
+  import Phoenix.HTML.Tag
 
-  ## Examples
-
-      iex> ReactPhoenix.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def react_component(name, props \\ %{}) do
+    props = Poison.encode!(props)
+    content_tag(:div, "", [{:data, [react_class: name, react_props: props]}])
   end
 end
