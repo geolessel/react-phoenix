@@ -1,6 +1,9 @@
 # ReactPhoenix
 
-**TODO: Add description**
+Simple helper functions to allow you to easily render React components
+in your Phoenix views. This is developed on top of brunch.
+
+The documentation is sparse in this 0.1 release, but here's the quick and dirty.
 
 ## Installation
 
@@ -13,7 +16,42 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/react_phoenix](https://hexdocs.pm/react_phoenix).
+After adding to your mix file, run:
+
+```
+> mix deps.get
+> mix compile
+> mix react_phoenix.install
+```
+
+This will install the main javascript file that allows this library to work as
+well as adding two lines to your web/static/js/app.js file that imports
+react_phoenix and calls it's main function.
+
+This is inserted at the bottom of the file AND SHOULD LIKELY STAY THERE.
+
+## Usage
+
+Once that is done, you can use it in your views by:
+
+1. Making sure that the component you'd like rendered is in the global namespace.
+   You can do that in `app.js` like this:
+   
+   ```
+   import MyComponent from "./components/my_component"
+   window.Components = {
+     MyComponent
+   }
+   ```
+2. In your view template, you can then render it like this:
+   ```
+   <%= ReactPhoenix.render_component("Components.MyComponent", %{any: "props", you: "need"}) %>
+   ```
+3. To save some typing, you can also add `import ReactPhoenix` in the `view`
+   section of your web/web.ex file. If you do so, you can just call
+   ```
+   <%= render_component(...) %>
+   ```
+
+[https://hexdocs.pm/react_phoenix](https://hexdocs.pm/react_phoenix)
 
