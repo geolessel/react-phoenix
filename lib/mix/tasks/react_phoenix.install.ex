@@ -7,7 +7,7 @@ defmodule Mix.Tasks.ReactPhoenix.Install do
   def run(_args) do
     info "\nInstalling ReactPhoenix..."
     info "Copying javascript files..."
-    case File.cp("./_build/dev/lib/react_phoenix/priv/js/react_phoenix.js", "./web/static/js/react_phoenix.js") do
+    case File.cp(Path.join([package_path(), "priv", "js", "react_phoenix.js"]), Path.join([File.cwd!, "web", "static", "vendor", "react_phoenix.js"])) do
       :ok ->
         info "Done."
         info "Adding required import to web/static/js/app.js..."
@@ -24,4 +24,11 @@ defmodule Mix.Tasks.ReactPhoenix.Install do
   defp info(txt), do: Mix.shell.info(txt)
   defp error(txt), do: Mix.shell.error(txt)
   defp cmd(txt), do: Mix.shell.cmd(txt)
+
+  def package_path do
+    __ENV__.file
+    |> Path.dirname()
+    |> String.split("/lib/mix")
+    |> hd()
+  end
 end
