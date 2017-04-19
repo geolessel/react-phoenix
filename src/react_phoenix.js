@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 export default class ReactPhoenix {
-  init() {
+  static init() {
     const elements = document.querySelectorAll('[data-react-class]')
     elements.forEach(e => {
       const targetId = document.getElementById(e.dataset.reactTargetId)

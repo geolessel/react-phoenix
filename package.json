@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "watch": "babel src --out-dir priv/js --watch",
+    "watch": "brunch watch --stdin",
+    "deploy": "brunch build --production",
+    "watch_babel": "babel src --out-dir priv/js --watch",
     "release": "node ./node_modules/babel-cli/bin/babel src/react_phoenix.js | node ./node_modules/uglify-js/bin/uglifyjs - --mangle --compress --output priv/js/react_phoenix.js"
   },
   "repository": {
@@ -21,9 +23,11 @@
   },
   "homepage": "https://github.com/geolessel/react-phoenix#readme",
   "devDependencies": {
+    "babel-brunch": "~6.0.0",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
-    "babel-preset-es2016": "^6.24.1",
-    "uglify-js": "^2.8.22"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "uglify-js-brunch": "^2.8.22"
   }
 }
