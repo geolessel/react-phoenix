@@ -3,7 +3,7 @@ defmodule ReactPhoenix.Mixfile do
 
   def project do
     [app: :react_phoenix,
-     version: "0.1.1",
+     version: "0.1.2",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -34,7 +34,7 @@ defmodule ReactPhoenix.Mixfile do
   defp package do
     [
      name: :react_phoenix,
-     files: ["lib", "priv", "mix.exs", "README*", "LICENSE*"],
+     files: ["lib", "priv", "mix.exs", "package.json", "README*", "LICENSE*"],
      maintainers: ["Geoffrey Lessel"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/geolessel/react-phoenix"}

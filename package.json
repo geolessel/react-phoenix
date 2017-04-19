@@ -21,6 +21,8 @@
   "bugs": {
     "url": "https://github.com/geolessel/react-phoenix/issues"
   },
+  "main": "./priv/js/react_phoenix.js",
+  "files": ["priv/js/react_phoenix.js", "package.json"],
   "homepage": "https://github.com/geolessel/react-phoenix#readme",
   "devDependencies": {
     "babel-brunch": "~6.0.0",
