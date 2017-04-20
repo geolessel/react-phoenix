@@ -13,3 +13,7 @@ export default class ReactPhoenix {
     })
   }
 }
+
+document.addEventListener("DOMContentLoaded", e => {
+  ReactPhoenix.init()
+})

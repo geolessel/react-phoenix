@@ -63,16 +63,11 @@ Then run
 ### 3. Import and initialize the javascript helper
 
 In your main application javascript file (usually `web/static/js/app.js`), add the
-following lines:
+following line:
 
 ```javascript
-import ReactPhoenix from "react-phoenix"
-ReactPhoenix.init()
+import "react-phoenix"
 ```
-
-Note that `ReactPhoenix.init()` SHOULD likely be at the bottom of this file and MUST
-be below any React components registered in the global namespace and used in your view
-templates (see *Usage* below).
 
 ### 4. (optional) Import the module into your views for less typing
 
@@ -111,10 +106,6 @@ Once installed, you can use `react_component` in your views by:
    window.Components = {
      MyComponent
    }
-   
-   // these should be below your components
-   import ReactPhoenix from "react-phoenix"
-   ReactPhoenix.init()
    ```
 
 2. In your view template, you can then render it like this:
