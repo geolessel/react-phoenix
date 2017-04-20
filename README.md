@@ -121,6 +121,7 @@ Once installed, you can use `react_component` in your views by:
    <%= ReactPhoenix.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
 
    # with no props and a target html element id option
+   <span id="my-react-span"></span>
    <%= ReactPhoenix.react_component("Components.MyComponent", %{}, target_id: "my-react-span") %>
    ```
    
