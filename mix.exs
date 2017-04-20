@@ -3,13 +3,14 @@ defmodule ReactPhoenix.Mixfile do
 
   def project do
     [app: :react_phoenix,
-     version: "0.1.2",
+     version: "0.2.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
      description: description(),
-     deps: deps()]
+     deps: deps(),
+     docs: docs()]
   end
 
   def application do
@@ -38,6 +39,16 @@ defmodule ReactPhoenix.Mixfile do
      maintainers: ["Geoffrey Lessel"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/geolessel/react-phoenix"}
+    ]
+  end
+
+  defp docs do
+    [
+      name: "ReactPhoenix",
+      source_url: "https://github.com/geolessel/react-phoenix",
+      homepage_url: "http://reactphoenix.com",
+      main: "ReactPhoenix",
+      extras: ["README.md"]
     ]
   end
 end

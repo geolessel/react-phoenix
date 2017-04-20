@@ -1,11 +1,77 @@
 defmodule ReactPhoenix do
   @moduledoc """
-  Documentation for ReactPhoenix.
+  Functions to make rendering React components easy in Phoenix.
+
+  Combined with the javascript also included in this package, rendering React
+  components in your Phoenix views can be much easier. The module was built
+  with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
+  package can make getting React into your application much faster than
+  switching over to a different system.
+
+  ## Making the helper available in Phoenix views
+
+  You can use these functions with their full names in your views once you have
+  this package installed as a dependency in your Phoenix app (ie
+  `ReactPhoenix.react_component(...)`) but it's much nice to be able to be able
+  to just write `react_component(...)` instead. In your `web/web.ex` file:
+
+  ```
+  defmodule MyPhoenixApp.Web do
+    ...
+    def view do
+      quote do
+        use Phoenix.View, root: "web/templates"
+
+        import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
+
+        use Phoenix.HTML
+
+        import MyPhoenixApp.Router.Helpers
+        import MyPhoenixApp.ErrorHelpers
+        import MyPhoenixApp.Gettext
+
+        import ReactPhoenix # <--- ADD THIS
+      end
+    end
+    ...
+  end
+  ```
   """
 
   import Phoenix.HTML.Tag
 
+  @doc """
+  Generate a div containing the named React component with no props or options.
+
+  Returns safe html: `{:safe, [60, "div", ...]}`.
+
+  You can utilize this in your Phoenix views:
+
+  ```
+  <%= ReactPhoenix.react_component("MyComponent") %>
+  ```
+
+  The resulting `<div>` tag is formatted specifically for the included javascript
+  helper to then turn into your named React component.
+  """
   def react_component(name), do: react_component(name, %{})
+
+  @doc """
+  Generate a div containing the named React component and pass it props.
+
+  Returns safe html: `{:safe, [60, "div", ...]}`.
+
+  Props can be passed in as a Map or a List.
+
+  You can utilize this in your Phoenix views:
+
+  ```
+  <%= ReactPhoenix.react_component("MyComponent", %{language: "elixir", awesome: true}) %>
+  ```
+
+  The resulting `<div>` tag is formatted specifically for the included javascript
+  helper to then turn into your named React component and then pass in the props specified.
+  """
   def react_component(name, props) when is_list(props) do
     react_component(name, Enum.into(props, %{}))
   end
@@ -13,6 +79,30 @@ defmodule ReactPhoenix do
     props = Poison.encode!(props)
     content_tag(:div, "", [{:data, [react_class: name, react_props: props]}])
   end
+
+  @doc """
+  Generate a div containing the named React component and pass it props and options.
+
+  Returns safe html: `{:safe, [60, "div", ...]}`.
+
+  For now, props MUST be passed in as a Map. The only option currently accepted is `target_id`.
+  If you pass in a `target_id`, the resulting `<div>` tag will tell the javascirpt helper
+  which HTML element you'd like to render the React component. This is helpful in scenarios
+  like server-side rendering of a component.
+
+  You can utilize this in your Phoenix views:
+
+  ```
+  <%= ReactPhoenix.react_component(
+        "MyComponent",
+        %{language: "elixir", awesome: true},
+        target_id: "react-div"
+      ) %>
+  ```
+
+  The resulting `<div>` tag is formatted specifically for the included javascript
+  helper to then turn into your named React component and then pass in the props specified.
+  """
   def react_component(name, props, opts) when is_map(props) do
     props = Poison.encode!(props)
     content_tag(:div, "", [{:data, [react_class: name, react_props: props, react_target_id: opts[:target_id]]}])

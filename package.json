@@ -1,35 +1,31 @@
 {
-  "name": "react-phoenix",
-  "version": "0.1.2",
-  "description": "Simple helper functions to allow you to easily render React components in your Phoenix views. This is developed on top of brunch.",
-  "directories": {
-    "doc": "doc",
-    "test": "test"
-  },
+  "name": "react_phoenix",
+  "version": "0.2.0",
   "scripts": {
-    "watch": "brunch watch --stdin",
-    "deploy": "brunch build --production",
-    "watch_babel": "babel src --out-dir priv/js --watch",
     "release": "node ./node_modules/babel-cli/bin/babel src/react_phoenix.js | node ./node_modules/uglify-js/bin/uglifyjs - --mangle --compress --output priv/js/react_phoenix.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/geolessel/react-phoenix.git"
   },
-  "author": "",
+  "author": "Geoffrey Lessel <geo@geoffreylessel.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/geolessel/react-phoenix/issues"
   },
   "main": "./priv/js/react_phoenix.js",
-  "files": ["priv/js/react_phoenix.js", "package.json"],
+  "files": [
+    "priv/js/react_phoenix.js",
+    "package.json"
+  ],
   "homepage": "https://github.com/geolessel/react-phoenix#readme",
   "devDependencies": {
-    "babel-brunch": "~6.0.0",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
+    "uglify-js": "^2.8.22"
+  },
+  "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "uglify-js-brunch": "^2.8.22"
+    "react-dom": "^15.5.4"
   }
 }

@@ -1,18 +1,28 @@
 # ReactPhoenix
 
-Simple helper functions to allow you to easily render React components
-in your Phoenix views. This is developed on top of brunch.
+Functions to make rendering React components easy in Phoenix.
 
-The documentation is sparse in this 0.1 release, but here's the quick and dirty.
+Combined with the javascript also included in this package, rendering React
+components in your Phoenix views is now much easier. The module was built
+with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
+package can make getting React into your application much faster than
+switching over to a different system.
 
-## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `react_phoenix` to your list of dependencies in `mix.exs`:
+## Installation in 3 (or 4) EASY STEPS!
+
+This package is meant to be quick and painless to install into your Phoenix
+application. It is assumed that you have already brought React into your
+application through `npm`. Here are the 3 steps:
+
+### 1. Declare the dependency
+
+The package can be installed by adding `react_phoenix` to your list of
+dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.1.1"}]
+  [{:react_phoenix, "~> 0.2.0"}]
 end
 ```
 
@@ -20,42 +30,114 @@ After adding to your mix file, run:
 
 ```
 > mix deps.get
-> mix compile
-> mix react_phoenix.install
 ```
 
-This will install the main javascript file that allows this library to work as
-well as adding two lines to your web/static/js/app.js file that imports
-react_phoenix and calls it's main function.
+### 2. Add the javascript dependency to package.json
 
-This is inserted at the bottom of the file AND SHOULD LIKELY STAY THERE.
+In order to correctly render a React component in your view templates, a
+provided javascript file must be included in your `package.json` file in
+the dependencies section. It might look like this:
+
+```
+{
+  ...
+  "dependencies": {
+    "babel-preset-react": "^6.23.0",
+    "minions.css": "^0.3.1",
+    "phoenix": "file:deps/phoenix",
+    "phoenix_html": "file:deps/phoenix_html",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+
+    "react_phoenix": "file:deps/react_phoenix" <-- ADD THIS!
+  },
+  ...
+}
+```
+
+Then run
+```
+> npm install
+```
+
+### 3. Import and intialize the javascript helper
+
+In your main application javascript file (usually `web/static/js/app.js`), add the
+following lines:
+
+```javascript
+import ReactPhoenix from "react-phoenix"
+ReactPhoenix.init()
+```
+
+Note that `ReactPhoenix.init()` SHOULD likely be at the bottom of this file and MUST
+be below any React components registered in the global namespace and used in your view
+templates (see *Usage* below).
+
+### 4. (optional) Import the module into your views for less typing
+
+If you'd like to just call `react_component(...)` instead of the full
+`ReactPhoenix.react_component(...)`, you can import `ReactPhoenix` into your `web/web.ex`
+views section. It might look like this:
+
+```elixir
+def view do
+  quote do
+    use Phoenix.View, root: "web/templates"
+
+    import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
+
+    use Phoenix.HTML
+
+    import MyPhoenixApp.Router.Helpers
+    import MyPhoenixApp.ErrorHelpers
+    import MyPhoenixApp.Gettext
+
+    import ReactPhoenix # <-- ADD THIS!
+  end
+end
+```
+
 
 ## Usage
 
-Once that is done, you can use it in your views by:
+Once installed, you can use `react_component` in your views by:
 
 1. Making sure that the component you'd like rendered is in the global namespace.
-   You can do that in `app.js` like this:
+   You can do that in `app.js` like this (for example):
    
    ```javascript
    import MyComponent from "./components/my_component"
    window.Components = {
      MyComponent
    }
+   
+   // these should be below your components
+   import ReactPhoenix from "react-phoenix"
+   ReactPhoenix.init()
    ```
+
 2. In your view template, you can then render it like this:
 
    ```elixir
-   <%= ReactPhoenix.render_component("Components.MyComponent", %{any: "props", you: "need"}) %>
-   # or
-   <%= ReactPhoenix.render_component("Components.MyComponent", any: "props", you: "need") %>
-   ```
-3. To save some typing, you can also add `import ReactPhoenix` in the `view`
-   section of your web/web.ex file. If you do so, you can just call
+   # with no props
+   <%= ReactPhoenix.react_component("Components.MyComponent") %>
 
-   ```elixir
-   <%= render_component(...) %>
-   ```
+   # with props
+   <%= ReactPhoenix.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
 
+   # with no props and a target html element id option
+   <%= ReactPhoenix.react_component("Components.MyComponent", %{}, target_id: "my-react-span") %>
+   ```
+   
+   This will render a special `div` element in your html output that will then be recognized by the
+   javascript helper as a div that should be turned into a React component. It will then render the
+   named component in that `div` (or a different element specified by ID via the `target_id` option).
+
+
+## Documentation and other stuff
+
+This package is heavily inspired by the [https://github.com/reactjs/react-rails](react-rails) project.
+
+For more detailed documentation, check out the hex docs at 
 [https://hexdocs.pm/react_phoenix](https://hexdocs.pm/react_phoenix)
-
