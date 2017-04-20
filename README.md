@@ -137,9 +137,9 @@ Once installed, you can use `react_component` in your views by:
 
 ## Troubleshooting
 
-* I keep getting a compilation error like this
+### I keep getting a compilation error like this
 
-  ```
+```
   19 Apr 20:52:40 - error: Compiling of web/static/js/component.js failed. SyntaxError: web/static/js/component.js: Unexpected token (10:6)
    8 |   render() {
    9 |     return (
@@ -148,7 +148,7 @@ Once installed, you can use `react_component` in your views by:
   11 |     )
   12 |   }
   13 | } ^G
-  ```
+```
 
   Most likely, you haven't set up your brunch config to know how to handle JSX files. I recommend
   the following:
@@ -161,7 +161,7 @@ Once installed, you can use `react_component` in your views by:
       // Configure your plugins
       plugins: {
         babel: {
-          presets: ["env", "react"],
+          presets: ["env", "react"], // <-- ADD THIS!
           // Do not use ES6 compiler in vendor code
           ignore: [/web\/static\/vendor/]
         }
