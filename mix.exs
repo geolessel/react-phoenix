@@ -47,7 +47,7 @@ defmodule ReactPhoenix.Mixfile do
       name: "ReactPhoenix",
       source_url: "https://github.com/geolessel/react-phoenix",
       homepage_url: "http://reactphoenix.com",
-      main: "README",
+      main: "readme",
       extras: ["README.md"]
     ]
   end
