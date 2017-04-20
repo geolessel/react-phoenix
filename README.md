@@ -1,6 +1,6 @@
 # ReactPhoenix
 
-Functions to make rendering React components easy in Phoenix.
+Functions to make rendering React.js components easy in Phoenix.
 
 Combined with the javascript also included in this package, rendering React
 components in your Phoenix views is now much easier. The module was built
@@ -13,7 +13,10 @@ switching over to a different system.
 
 This package is meant to be quick and painless to install into your Phoenix
 application. It is assumed that you have already brought React into your
-application through `npm`. Here are the 3 steps:
+application through `npm`.
+
+> Would you rather watch a video? Watch me set it all up from `mix phoenix.new` to rendering
+> a React component in 4 minutes [here](https://youtu.be/icwjAbck8yk).
 
 ### 1. Declare the dependency
 
