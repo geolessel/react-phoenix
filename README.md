@@ -135,6 +135,41 @@ Once installed, you can use `react_component` in your views by:
    named component in that `div` (or a different element specified by ID via the `target_id` option).
 
 
+## Troubleshooting
+
+* I keep getting a compilation error like this
+
+  ```
+  19 Apr 20:52:40 - error: Compiling of web/static/js/component.js failed. SyntaxError: web/static/js/component.js: Unexpected token (10:6)
+   8 |   render() {
+   9 |     return (
+> 10 |       <h1>You rendered React!</h1>
+     |       ^
+  11 |     )
+  12 |   }
+  13 | } ^G
+  ```
+
+  Most likely, you haven't set up your brunch config to know how to handle JSX files. I recommend
+  the following:
+
+  1. Run `npm install babel-preset-react babel-preset-env --save`
+  2. Modify your `brunch-config.js` file to include those presets
+
+      ```js
+      // ...
+      // Configure your plugins
+      plugins: {
+        babel: {
+          presets: ["env", "react"],
+          // Do not use ES6 compiler in vendor code
+          ignore: [/web\/static\/vendor/]
+        }
+      },
+      // ...
+      ```
+
+
 ## Documentation and other stuff
 
 This package is heavily inspired by the [https://github.com/reactjs/react-rails](react-rails) project.
