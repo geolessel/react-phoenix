@@ -60,7 +60,7 @@ Then run
 > npm install
 ```
 
-### 3. Import and intialize the javascript helper
+### 3. Import and initialize the javascript helper
 
 In your main application javascript file (usually `web/static/js/app.js`), add the
 following lines:
@@ -172,7 +172,7 @@ Once installed, you can use `react_component` in your views by:
 
 ## Documentation and other stuff
 
-This package is heavily inspired by the [https://github.com/reactjs/react-rails](react-rails) project.
+This package is heavily inspired by the [react-rails](https://github.com/reactjs/react-rails) project.
 
 For more detailed documentation, check out the hex docs at 
 [https://hexdocs.pm/react_phoenix](https://hexdocs.pm/react_phoenix)
