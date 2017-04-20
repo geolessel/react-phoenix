@@ -1,5 +1,5 @@
 {
-  "name": "react_phoenix",
+  "name": "react-phoenix",
   "version": "0.2.0",
   "scripts": {
     "release": "node ./node_modules/babel-cli/bin/babel src/react_phoenix.js | node ./node_modules/uglify-js/bin/uglifyjs - --mangle --compress --output priv/js/react_phoenix.js"

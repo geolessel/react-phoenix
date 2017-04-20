@@ -49,7 +49,7 @@ the dependencies section. It might look like this:
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
 
-    "react_phoenix": "file:deps/react_phoenix" <-- ADD THIS!
+    "react-phoenix": "file:deps/react_phoenix" <-- ADD THIS!
   },
   ...
 }
