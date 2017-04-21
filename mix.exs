@@ -4,7 +4,7 @@ defmodule ReactPhoenix.Mixfile do
   def project do
     [app: :react_phoenix,
      version: "0.3.0",
-     elixir: "~> 1.0",
+     elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
