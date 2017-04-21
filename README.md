@@ -1,5 +1,7 @@
 # ReactPhoenix
 
+[![Build Status](https://travis-ci.org/geolessel/react-phoenix.svg?branch=master)](https://travis-ci.org/geolessel/react-phoenix)
+
 Functions to make rendering React.js components easy in Phoenix.
 
 Combined with the javascript also included in this package, rendering React
