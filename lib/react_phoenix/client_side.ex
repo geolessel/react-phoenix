@@ -1,6 +1,6 @@
 defmodule ReactPhoenix.ClientSide do
   @moduledoc """
-  Functions to make rendering React components easy in Phoenix.
+  Functions to make rendering React components easy in Phoenix views.
 
   Combined with the javascript also included in this package, rendering React
   components in your Phoenix views can be much easier. The module was built
