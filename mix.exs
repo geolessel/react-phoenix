@@ -14,7 +14,7 @@ defmodule ReactPhoenix.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger],
+    [extra_applications: [:logger, :porcelain],
      mod: {ReactPhoenix.Application, []}]
   end
 
