@@ -14,7 +14,8 @@ defmodule ReactPhoenix.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger]]
+    [extra_applications: [:logger],
+     mod: {ReactPhoenix.Application, []}]
   end
 
   def description do
@@ -28,7 +29,8 @@ defmodule ReactPhoenix.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:phoenix_html, "~> 2.9"},
-      {:poison, "~> 2.2 or ~> 3.0"}
+      {:poison, "~> 2.2 or ~> 3.0"},
+      {:std_json_io, github: "geolessel/std_json_io"}
     ]
   end
 
