@@ -1,5 +1,5 @@
-defmodule ReactPhoenix.Server do
-  @path_prefix Path.join(["priv", "static", "js", "components"])
+defmodule ReactPhoenix.ServerSide do
+  @path_prefix Application.get_env(:react_phoenix, :compiled_path)
 
   def react_component(component, props \\ %{}) do
     ReactPhoenix.ReactIo.json_call!(%{
