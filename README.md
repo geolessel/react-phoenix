@@ -11,7 +11,7 @@ package can make getting React into your application much faster than
 switching over to a different system.
 
 
-## Installation in 3 (or 4) EASY STEPS!
+## Installation in 3 (or 4 [or 5]) EASY STEPS!
 
 This package is meant to be quick and painless to install into your Phoenix
 application. It is assumed that you have already brought React into your
@@ -93,8 +93,29 @@ def view do
     import MyPhoenixApp.ErrorHelpers
     import MyPhoenixApp.Gettext
 
-    import ReactPhoenix # <-- ADD THIS!
+    import ReactPhoenix.ClientSide # <-- ADD THIS!
   end
+end
+```
+
+### 5. (optional) Enable server-side rendering
+
+If you'd like to enable server-side rendering, there are a small handful of extra
+steps you'll need to take to configure your Phoenix app. The documentation on getting
+everything set up for that is extensively covered in the
+[moduledoc for ReactPhoenix.ServerSide](https://hexdocs.pm/react_phoenix/ReactPhoenix.ServerSide.html)
+so I won't restate everything here.
+
+Once fully set up and configured, you can do this in your controllers:
+
+```elixir
+def index(conn, _params) do
+  people = ["Jack", "John", "Sayid", "Sawyer"]
+  html = ReactPhoenix.ServerSide.react_component(
+    "characters",
+    %{people: people}
+  )
+  render(conn, "index.html", react_html: html, people: people)
 end
 ```
 
@@ -122,9 +143,10 @@ Once installed, you can use `react_component` in your views by:
    # with props
    <%= ReactPhoenix.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
 
-   # with no props and a target html element id option
-   <span id="my-react-span"></span>
-   <%= ReactPhoenix.react_component("Components.MyComponent", %{}, target_id: "my-react-span") %>
+   # with props and a target html element id option
+   # this can be used for server-side rendering (continuing with example from that section above)
+   <span id="my-react-span"><%= @react_html %></span>
+   <%= ReactPhoenix.react_component("Components.Characters", %{people: people}, target_id: "my-react-span") %>
    ```
    
    This will render a special `div` element in your html output that will then be recognized by the
@@ -134,18 +156,18 @@ Once installed, you can use `react_component` in your views by:
 
 ## Troubleshooting
 
-### I keep getting a compilation error like this
+* **I keep getting a compilation error like this**
 
-```
-  19 Apr 20:52:40 - error: Compiling of web/static/js/component.js failed. SyntaxError: web/static/js/component.js: Unexpected token (10:6)
-   8 |   render() {
-   9 |     return (
-> 10 |       <h1>You rendered React!</h1>
-     |       ^
-  11 |     )
-  12 |   }
-  13 | } ^G
-```
+  ```
+    19 Apr 20:52:40 - error: Compiling of web/static/js/component.js failed. SyntaxError: web/static/js/component.js: Unexpected token (10:6)
+     8 |   render() {
+     9 |     return (
+  > 10 |       <h1>You rendered React!</h1>
+       |       ^
+    11 |     )
+    12 |   }
+    13 | } ^G
+  ```
 
   Most likely, you haven't set up your brunch config to know how to handle JSX files. I recommend
   the following:
