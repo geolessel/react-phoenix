@@ -123,8 +123,9 @@ defmodule ReactPhoenix.ServerSide do
   and you have a component file compiled there with the name of `hello_react.js`, you would pass `"hello_react"` as `filename`.
   """
   def react_component(filename, props \\ %{}) do
+    path = Path.join(@path_prefix, "#{filename}.js")
     ReactPhoenix.ReactIo.json_call!(%{
-      component: Path.join(@path_prefix, "#{filename}.js"),
+      component: path,
       props: props
     })
     |> Map.get("html")
