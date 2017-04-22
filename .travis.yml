@@ -1,6 +1,6 @@
 language: elixir
 env:
-  - NODE_VERSION="5.9.1"
+  - NODE_VERSION="6.10.2"
 before_install:
   - mix local.rebar --force
   - mix local.hex --force
