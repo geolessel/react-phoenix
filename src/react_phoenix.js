@@ -4,7 +4,7 @@ import ReactDOM from "react-dom"
 export default class ReactPhoenix {
   static init() {
     const elements = document.querySelectorAll('[data-react-class]')
-    elements.forEach(e => {
+    Array.from(elements).forEach(e => {
       const targetId = document.getElementById(e.dataset.reactTargetId)
       const targetDiv = targetId ? targetId : e
       const reactProps = e.dataset.reactProps ? e.dataset.reactProps : "{}"
