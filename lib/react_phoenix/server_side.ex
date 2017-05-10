@@ -96,8 +96,8 @@ defmodule ReactPhoenix.ServerSide do
 
     def index(conn, _params) do
       people = ["Joe", "Robert", "Other Joe"]
-      %{"html" => html} = ReactPhoenix.ServerSide.react_component("hello", %{people: people})
-      render(conn, "index.html", react_html: html, people: people
+      html = ReactPhoenix.ServerSide.react_component("hello", %{people: people})
+      render(conn, "index.html", react_html: html, people: people)
     end
   end
   ```
@@ -107,7 +107,7 @@ defmodule ReactPhoenix.ServerSide do
 
   ```
   <div id="hello"><%= @react_html %></div>
-  <%= ReactPhoenix.ClientSide.react_component("Components.Hello", %{people: @people}, target_id: "hello" %>
+  <%= ReactPhoenix.ClientSide.react_component("Components.Hello", %{people: @people}, target_id: "hello") %>
   ```
   """
   @path_prefix Application.get_env(:react_phoenix, :compiled_path)
