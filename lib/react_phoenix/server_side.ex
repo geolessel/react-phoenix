@@ -64,7 +64,6 @@ defmodule ReactPhoenix.ServerSide do
 
   If the aforementioned does not apply, you can ignore this step and use the default path.
 
-
   ### `config/dev.exs`
 
   ```
