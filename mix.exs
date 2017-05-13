@@ -1,9 +1,12 @@
 defmodule ReactPhoenix.Mixfile do
   use Mix.Project
 
+  @version "0.4.0-rc2"
+  @source_url "https://github.com/geolessel/react-phoenix"
+
   def project do
     [app: :react_phoenix,
-     version: "0.3.0",
+     version: @version,
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -14,7 +17,8 @@ defmodule ReactPhoenix.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger]]
+    [applications: [:logger, :phoenix_html, :poison, :std_json_io_2],
+     mod: {ReactPhoenix.Application, []}]
   end
 
   def description do
@@ -28,7 +32,8 @@ defmodule ReactPhoenix.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:phoenix_html, "~> 2.9"},
-      {:poison, "~> 2.2 or ~> 3.0"}
+      {:poison, "~> 2.2 or ~> 3.0"},
+      {:std_json_io_2, "~> 0.2"}
     ]
   end
 
@@ -38,14 +43,14 @@ defmodule ReactPhoenix.Mixfile do
      files: ["lib", "priv", "mix.exs", "package.json", "README*", "LICENSE*"],
      maintainers: ["Geoffrey Lessel"],
      licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/geolessel/react-phoenix"}
+     links: %{"GitHub" => @source_url}
     ]
   end
 
   defp docs do
     [
       name: "ReactPhoenix",
-      source_url: "https://github.com/geolessel/react-phoenix",
+      source_url: @source_url,
       homepage_url: "http://reactphoenix.com",
       main: "readme",
       extras: ["README.md"]

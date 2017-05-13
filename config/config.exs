@@ -1,5 +1,3 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
 # This configuration is loaded before any dependency and is restricted
@@ -8,23 +6,9 @@ use Mix.Config
 # if you want to provide default values for your application for
 # 3rd-party users, it should be done in your "mix.exs" file.
 
-# You can configure for your application as:
-#
-#     config :react_phoenix, key: :value
-#
-# And access this configuration in your application as:
-#
-#     Application.get_env(:react_phoenix, :key)
-#
-# Or configure a 3rd-party app:
-#
-#     config :logger, level: :info
-#
+config :porcelain, driver: Porcelain.Driver.Basic
 
-# It is also possible to import configuration files, relative to this
-# directory. For example, you can emulate configuration per environment
-# by uncommenting the line below and defining dev.exs, test.exs and such.
-# Configuration from the imported file will override the ones defined
-# here (which is why it is important to import them last).
-#
-#     import_config "#{Mix.env}.exs"
+config :react_phoenix,
+  compiled_path: Path.join(["priv", "static", "js", "components"])
+
+import_config "#{Mix.env}.exs"
