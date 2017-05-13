@@ -50,17 +50,16 @@ defmodule ReactPhoenix.ServerSide do
   Endpoint. *Be careful not to overwrite* anything you currently have
   configured, but to add a new watcher.
 
-
   Additionally, you may need to specify the route of your react-stdio module
   if your node_modules directory does not live in the root directory of your
-  project. *(E.g. Your ReactPhoenix project lives within an umbrella project.)*
+  project *(if your ReactPhoenix project lives within an umbrella project, for example)*.
 
   Do this in your `config/config.exs` file.
 
   ```
   config :react_phoenix,
     ...
-    react_stdio_path: Path.join(["path_to_your_app","node_modules", ".bin", "react-stdio"])
+    react_stdio_path: Path.join(["path_to_your_app", "node_modules", ".bin", "react-stdio"])
   ```
 
   If the aforementioned does not apply, you can ignore this step and use the default path.
