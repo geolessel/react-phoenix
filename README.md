@@ -10,6 +10,12 @@ with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
 package can make getting React into your application much faster than
 switching over to a different system.
 
+Beyond just rendering your React.js components on the client-side, you
+can also optionally enable server-side rendering. This allows you to
+render all the React components in your controller and output the
+resulting html on initial page load (which can help with things like
+search engine optimization).
+
 
 ## Installation in 3 (or 4 [or 5]) EASY STEPS!
 
@@ -138,15 +144,15 @@ Once installed, you can use `react_component` in your views by:
 
    ```elixir
    # with no props
-   <%= ReactPhoenix.react_component("Components.MyComponent") %>
+   <%= ReactPhoenix.ClientSide.react_component("Components.MyComponent") %>
 
    # with props
-   <%= ReactPhoenix.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
+   <%= ReactPhoenix.ClientSide.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
 
    # with props and a target html element id option
    # this can be used for server-side rendering (continuing with example from that section above)
    <span id="my-react-span"><%= @react_html %></span>
-   <%= ReactPhoenix.react_component("Components.Characters", %{people: people}, target_id: "my-react-span") %>
+   <%= ReactPhoenix.ClientSide.react_component("Components.Characters", %{people: people}, target_id: "my-react-span") %>
    ```
    
    This will render a special `div` element in your html output that will then be recognized by the
