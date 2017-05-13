@@ -76,9 +76,9 @@ import "react-phoenix"
 
 ### 4. (optional) Import the module into your views for less typing
 
-If you'd like to just call `react_component(...)` instead of the full
-`ReactPhoenix.react_component(...)`, you can import `ReactPhoenix` into your `web/web.ex`
-views section. It might look like this:
+If you'd like to just call `react_component(...)` in your views instead of the full
+`ReactPhoenix.ClientSide.react_component(...)`, you can import `ReactPhoenix.ClientSide`
+into your `web/web.ex` views section. It might look like this:
 
 ```elixir
 def view do
