@@ -44,7 +44,12 @@ defmodule ReactPhoenix.ServerSide do
   This tells our renderer to look for the component in the
   `priv/static/js/components` directory of our project.
 
-  Additionally, you may need to specify the route of your react-stdio module
+  #### Custom react-stdio location
+
+  _If you are using a standard Phoenix 1.2 or 1.3 app structure, you can
+  skip this section._
+
+  You may need to specify the route of your react-stdio module
   if your node_modules directory does not live in the root directory of your
   project *(if your ReactPhoenix project lives within an umbrella project, for example)*.
 
@@ -56,6 +61,10 @@ defmodule ReactPhoenix.ServerSide do
     # defaults to node_modules/.bin/react-stdio
     react_stdio_path: Path.join(["path_to_your_app", "node_modules", ".bin", "react-stdio"])
   ```
+
+  Then run `mix deps.clean react_phoenix && mix deps.get`.
+
+  #### Set up the watcher
 
   Configure your Endpoint to watch for new component files and compile them
   down as it finds them (but only in dev). If you have a standard Phoenix
