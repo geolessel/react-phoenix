@@ -1,7 +1,8 @@
 defmodule ReactPhoenix.ReactIo.PathFinder do
   @moduledoc false
-  @phoenix_1_3_react_stdio_path Path.join(~w(.. .. assets node_modules .bin react-stdio))
-  @phoenix_1_2_react_stdio_path Path.join(~w(.. .. node_modules .bin react-stdio))
+  @app_dir File.cwd!
+  @phoenix_1_3_react_stdio_path Path.join(~w(#{@app_dir} assets node_modules .bin react-stdio))
+  @phoenix_1_2_react_stdio_path Path.join(~w(#{@app_dir} node_modules .bin react-stdio))
   @local_react_stdio_path Path.join(~w(node_modules .bin react-stdio))
 
   def react_stdio_path(), do: react_stdio_path(default_locations())
