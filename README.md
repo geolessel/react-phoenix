@@ -17,6 +17,20 @@ render all the React components in your controller and output the
 resulting html on initial page load (which can help with things like
 search engine optimization).
 
+## Note regarding Phoenix 1.3
+
+Although this package works just fine with Phoenix 1.3, the installation
+instructions vary slightly from below. If you are using Phoenix 1.2 and its
+default directory structure, carry on. If you are using Phoenix 1.3 and its
+default directory strucutre, some chanages are required.
+
+While I'm working on updating this README to reflect the different installation
+instructions, I have created an example Phoenix 1.3 application for you to
+take as an example. I have broken out in each commit the steps required to get
+from `mix phx.new` to rendering components both client- and server-side.
+
+You can see that [example Phoenix 1.3 app here](https://github.com/geolessel/react-phoenix-example-1.3).
+
 
 ## Installation in 3 (or 4 [or 5]) EASY STEPS!
 
