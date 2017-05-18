@@ -1,6 +1,7 @@
 # ReactPhoenix
 
 [![Build Status](https://travis-ci.org/geolessel/react-phoenix.svg?branch=master)](https://travis-ci.org/geolessel/react-phoenix)
+[![Hex.pm](https://img.shields.io/hexpm/v/react_phoenix.svg)](https://hex.pm/packages/react_phoenix)
 
 Functions to make rendering React.js components easy in Phoenix.
 
@@ -33,7 +34,7 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.4.0"}]
+  [{:react_phoenix, "~> 0.4.1"}]
 end
 ```
 
