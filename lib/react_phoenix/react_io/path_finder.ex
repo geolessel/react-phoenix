@@ -10,7 +10,6 @@ defmodule ReactPhoenix.ReactIo.PathFinder do
 
   defp do_react_stdio_path([]), do: raise("#{ReactPhoenix}: An installation of react-stdio cannot be found. Please run `npm install` and/or set the :react_stdio_path config value for :react_pheonix in your application.")
   defp do_react_stdio_path([location | rest]) do
-    location = Path.expand(location)
     case File.exists?(location) do
       true -> location
       false -> do_react_stdio_path(rest)
