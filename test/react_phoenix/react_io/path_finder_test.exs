@@ -7,7 +7,7 @@ defmodule ReactPhoenix.ReactIo.PathFinderTest do
     assert react_stdio_path(["does_not_exist", "test"]) == "test"
   end
 
-  test "react_stdio_path raises an error if no location is found" do
-    assert_raise RuntimeError, fn -> react_stdio_path([]) end
+  test "react_stdio_path returns nil if no location is found" do
+    assert react_stdio_path([]) == nil
   end
 end
