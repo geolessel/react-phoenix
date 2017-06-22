@@ -12,11 +12,11 @@ defmodule ReactPhoenix.ReactIo.PathFinder do
 
   defp do_react_stdio_path([]) do
     "#{ReactPhoenix}: An installation of react-stdio cannot be found. "
-      <> "Please run `npm install` and/or set the :react_stdio_path config value for :react_pheonix in your application. "
-      <> "Then RECOMPILE this package (`mix deps.clean react_phoenix && mix deps.compile`). "
-      <> "Server-side rendering won't work until you fix this issue. "
-      <> "If you only use client-side rendering, you can ignore this."
-    |> Logger.warn
+    <> "Please run `npm install` and/or set the :react_stdio_path config value for :react_pheonix in your application. "
+    <> "Then RECOMPILE this package (`mix deps.clean react_phoenix && mix deps.compile`). "
+    <> "Server-side rendering won't work until you fix this issue. "
+    <> "If you only use client-side rendering, you can ignore this."
+    |> Logger.warn()
     nil
   end
   defp do_react_stdio_path([location | rest]) do
