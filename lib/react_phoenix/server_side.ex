@@ -143,7 +143,7 @@ defmodule ReactPhoenix.ServerSide do
   `filename` should be, along with the `path_prefix` configured for your application,
   where your compiled React component can be found (minus the `.js` filename extension).
 
-  For example, if you configured your app with `config :react_pheonix, compiled_path: "priv/static/js/components"`
+  For example, if you configured your app with `config :react_phoenix, compiled_path: "priv/static/js/components"`
   and you have a component file compiled there with the name of `hello_react.js`, you would pass `"hello_react"` as `filename`.
   """
   def react_component(filename, props \\ %{}) do
