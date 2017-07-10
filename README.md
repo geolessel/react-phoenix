@@ -48,7 +48,7 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.4.2"}]
+  [{:react_phoenix, "~> 0.4.3"}]
 end
 ```
 
@@ -121,7 +121,7 @@ end
 
 ### 5. (optional) Enable server-side rendering
 
-**As of v0.4.2, Server-side rendering is currently not working as intended. While I work on returning
+**As of v0.4, Server-side rendering is currently not working as intended. While I work on returning
 this functionality, client-side rendering is working fine. The issue is making sure that each component
 that needs to be rendered server-side has ALL the needed javascript libraries included inside the
 component file. I'm attempting to find a way to do this with brunch and then make it easy to use
