@@ -1,7 +1,7 @@
 defmodule ReactPhoenix.Mixfile do
   use Mix.Project
 
-  @version "0.4.3"
+  @version "0.5.0"
   @source_url "https://github.com/geolessel/react-phoenix"
 
   def project do
@@ -17,8 +17,8 @@ defmodule ReactPhoenix.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :phoenix_html, :poison, :std_json_io_2],
-     mod: {ReactPhoenix.Application, []}]
+    [applications: [:logger, :phoenix_html, :poison],
+     mod: {}]
   end
 
   def description do
@@ -32,8 +32,7 @@ defmodule ReactPhoenix.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:phoenix_html, "~> 2.9"},
-      {:poison, "~> 2.2 or ~> 3.0"},
-      {:std_json_io_2, "~> 0.2"}
+      {:poison, "~> 2.2 or ~> 3.0"}
     ]
   end
 

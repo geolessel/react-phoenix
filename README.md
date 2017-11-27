@@ -11,12 +11,6 @@ with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
 package can make getting React into your application much faster than
 switching over to a different system.
 
-Beyond just rendering your React.js components on the client-side, you
-can also optionally enable server-side rendering. This allows you to
-render all the React components in your controller and output the
-resulting html on initial page load (which can help with things like
-search engine optimization).
-
 ## Note regarding Phoenix 1.3
 
 Although this package works just fine with Phoenix 1.3, the installation
