@@ -50,12 +50,8 @@ the dependencies section. It might look like this:
 {
   ...
   "dependencies": {
-    "babel-preset-react": "^6.23.0",
-    "minions.css": "^0.3.1",
-    "phoenix": "file:deps/phoenix",
-    "phoenix_html": "file:deps/phoenix_html",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
 
     "react-phoenix": "file:../deps/react_phoenix" <-- ADD THIS!
   },
