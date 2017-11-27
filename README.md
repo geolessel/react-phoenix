@@ -15,7 +15,7 @@ switching over to a different system.
 > Note regarding Phoenix versions < 1.3
 >
 > This README is written as a guide for Phoenix apps running Phoenix >= 1.3. If you are using a
-> version of Phoenix below version 1.2, you can check out the [Phoenix 1.2 README](README-phoenix-1.2.md).
+> version of Phoenix below version 1.3, you can check out the [Phoenix 1.2 README](README-phoenix-1.2.md).
 
 
 ## Installation in 4 (or 5) EASY STEPS!
