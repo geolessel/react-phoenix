@@ -46,7 +46,7 @@ In order to correctly render a React component in your view templates, a
 provided javascript file must be included in your `assets/package.json` file in
 the dependencies section. It might look like this:
 
-```
+```js
 {
   ...
   "dependencies": {
@@ -148,7 +148,6 @@ Once installed, you can use `react_component` in your views by:
    <%= ReactPhoenix.ClientSide.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
 
    # with props and a target html element id option
-   # this can be used for server-side rendering (continuing with example from that section above)
    <span id="my-react-span"><%= @react_html %></span>
    <%= ReactPhoenix.ClientSide.react_component("Components.Characters", %{people: people}, target_id: "my-react-span") %>
    ```
@@ -160,7 +159,8 @@ Once installed, you can use `react_component` in your views by:
 
 ## What about server-side rendering?
 
-Server-side rendering is a bit of a bear to get right with brunch. In fact, there was a previous version (0.4.3) of
+Server-side rendering is a bit of a bear to get right with brunch. In fact, there was a previous version
+([0.4.3](https://github.com/geolessel/react-phoenix/tree/v0.4.3)) of
 `react-phoenix` that included an attempt at server-side rendering. It worked locally for me, but only after many
 attempts to get it right. In the end, there was a specific set of hand-wavy things you needed to do to get it working
 and I removed all the server-side code from the master branch for now.
