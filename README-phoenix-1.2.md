@@ -1,4 +1,4 @@
-# ReactPhoenix
+# ReactPhoenix for Phoenix <= 1.2
 
 [![Build Status](https://travis-ci.org/geolessel/react-phoenix.svg?branch=master)](https://travis-ci.org/geolessel/react-phoenix)
 [![Hex.pm](https://img.shields.io/hexpm/v/react_phoenix.svg)](https://hex.pm/packages/react_phoenix)
@@ -11,17 +11,14 @@ with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
 package can make getting React into your application much faster than
 switching over to a different system.
 
+## Installation in 3 (or 4) EASY STEPS!
 
-> Note regarding Phoenix versions < 1.3
->
-> This README is written as a guide for Phoenix apps running Phoenix >= 1.3. If you are using a
-> version of Phoenix below version 1.2, you can check out the [Phoenix 1.2 README](README-phoenix-1.2.md).
+This package is meant to be quick and painless to install into your Phoenix
+application. It is assumed that you have already brought React into your
+application through `npm`.
 
-
-## Installation in 4 (or 5) EASY STEPS!
-
-This package is meant to be quick and painless to install into your Phoenix application.
-
+> Would you rather watch a video? Watch me set it all up from `mix phoenix.new` to rendering
+> a React component in 4 minutes [here](https://youtu.be/icwjAbck8yk).
 
 ### 1. Declare the dependency
 
@@ -30,7 +27,7 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.5.0"}]
+  [{:react_phoenix, "~> 0.4.3"}]
 end
 ```
 
@@ -43,7 +40,7 @@ After adding to your mix file, run:
 ### 2. Add the javascript dependency to package.json
 
 In order to correctly render a React component in your view templates, a
-provided javascript file must be included in your `assets/package.json` file in
+provided javascript file must be included in your `package.json` file in
 the dependencies section. It might look like this:
 
 ```
@@ -57,57 +54,33 @@ the dependencies section. It might look like this:
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
 
-    "react-phoenix": "file:../deps/react_phoenix" <-- ADD THIS!
+    "react-phoenix": "file:deps/react_phoenix" <-- ADD THIS!
   },
   ...
 }
 ```
 
-Then run (from your `assets` directory)
-
+Then run
 ```
 > npm install
 ```
 
 
-### 3. Make sure React and Babel presets are installed
+### 3. Import and initialize the javascript helper
 
-Since we want React and would like to write JSX in our app, we need
-to make sure we get the packages brunch needs in order to compile our files.
-
-```
-> npm install react babel-preset-env babel-preset-react --save
-```
-
-We also need to activate those presets from our `assets/brunch-config.js` file:
-
-```js
-// ...
-// Configure your plugins
-plugins: {
-  babel: {
-    presets: ["env", "react"], // <-- ADD THIS!
-    // Do not use ES6 compiler in vendor code
-    ignore: [/vendor/]
-  }
-},
-// ...
-```
-
-### 4. Import and initialize the javascript helper
-
-In your main application javascript file (usually `assets/js/app.js`), add the
+In your main application javascript file (usually `web/static/js/app.js`), add the
 following line:
 
 ```javascript
 import "react-phoenix"
 ```
 
-### 5. (optional) Import the module into your views for less typing
+
+### 4. (optional) Import the module into your views for less typing
 
 If you'd like to just call `react_component(...)` in your views instead of the full
 `ReactPhoenix.ClientSide.react_component(...)`, you can import `ReactPhoenix.ClientSide`
-into your `lib/APPNAME_web.ex` views section. It might look like this:
+into your `web/web.ex` views section. It might look like this:
 
 ```elixir
 def view do
@@ -152,8 +125,7 @@ Once installed, you can use `react_component` in your views by:
    <%= ReactPhoenix.ClientSide.react_component("Components.MyComponent", %{language: "elixir", awesome: true}) %>
 
    # with props and a target html element id option
-   # this can be used for server-side rendering (continuing with example from that section above)
-   <span id="my-react-span"><%= @react_html %></span>
+   <span id="my-react-span"></span>
    <%= ReactPhoenix.ClientSide.react_component("Components.Characters", %{people: people}, target_id: "my-react-span") %>
    ```
    
@@ -162,15 +134,39 @@ Once installed, you can use `react_component` in your views by:
    named component in that `div` (or a different element specified by ID via the `target_id` option).
 
 
-## What about server-side rendering?
+## Troubleshooting
 
-Server-side rendering is a bit of a bear to get right with brunch. In fact, there was a previous version (0.4.3) of
-`react-phoenix` that included an attempt at server-side rendering. It worked locally for me, but only after many
-attempts to get it right. In the end, there was a specific set of hand-wavy things you needed to do to get it working
-and I removed all the server-side code from the master branch for now.
+* **I keep getting a compilation error like this**
 
-I may have some time freed up in the future to attempt to tackle it again. But for the simplicity of installation and usage, client-side
-rendering is likely all you'll need for now.
+  ```
+    19 Apr 20:52:40 - error: Compiling of web/static/js/component.js failed. SyntaxError: web/static/js/component.js: Unexpected token (10:6)
+     8 |   render() {
+     9 |     return (
+  > 10 |       <h1>You rendered React!</h1>
+       |       ^
+    11 |     )
+    12 |   }
+    13 | } ^G
+  ```
+
+  Most likely, you haven't set up your brunch config to know how to handle JSX files. I recommend
+  the following:
+
+  1. Run `npm install react babel-preset-react babel-preset-env --save`
+  2. Modify your `brunch-config.js` file to include those presets
+
+      ```js
+      // ...
+      // Configure your plugins
+      plugins: {
+        babel: {
+          presets: ["env", "react"], // <-- ADD THIS!
+          // Do not use ES6 compiler in vendor code
+          ignore: [/web\/static\/vendor/]
+        }
+      },
+      // ...
+      ```
 
 
 ## Documentation and other stuff
