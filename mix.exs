@@ -17,8 +17,7 @@ defmodule ReactPhoenix.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :phoenix_html, :poison],
-     mod: []]
+    [applications: [:logger, :phoenix_html, :poison],]
   end
 
   def description do
