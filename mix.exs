@@ -5,19 +5,21 @@ defmodule ReactPhoenix.Mixfile do
   @source_url "https://github.com/geolessel/react-phoenix"
 
   def project do
-    [app: :react_phoenix,
-     version: @version,
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     package: package(),
-     description: description(),
-     deps: deps(),
-     docs: docs()]
+    [
+      app: :react_phoenix,
+      version: @version,
+      elixir: "~> 1.2",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      package: package(),
+      description: description(),
+      deps: deps(),
+      docs: docs()
+    ]
   end
 
   def application do
-    [applications: [:logger, :phoenix_html, :poison],]
+    [applications: [:logger, :phoenix_html, :poison]]
   end
 
   def description do
@@ -37,11 +39,11 @@ defmodule ReactPhoenix.Mixfile do
 
   defp package do
     [
-     name: :react_phoenix,
-     files: ["lib", "priv", "mix.exs", "package.json", "README*", "LICENSE*"],
-     maintainers: ["Geoffrey Lessel"],
-     licenses: ["MIT"],
-     links: %{"GitHub" => @source_url}
+      name: :react_phoenix,
+      files: ["lib", "priv", "mix.exs", "package.json", "README*", "LICENSE*"],
+      maintainers: ["Geoffrey Lessel"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => @source_url}
     ]
   end
 
