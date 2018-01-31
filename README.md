@@ -30,7 +30,7 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.5.0"}]
+  [{:react_phoenix, "~> 0.5.1"}]
 end
 ```
 
