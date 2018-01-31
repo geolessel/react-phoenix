@@ -8,7 +8,6 @@ use Mix.Config
 
 config :porcelain, driver: Porcelain.Driver.Basic
 
-config :react_phoenix,
-  compiled_path: Path.join(["priv", "static", "js", "components"])
+config :react_phoenix, compiled_path: Path.join(["priv", "static", "js", "components"])
 
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
