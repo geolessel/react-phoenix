@@ -32,6 +32,7 @@ defmodule ReactPhoenix.Mixfile do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
+      {:dialyxir, "~> 0.5", only: :dev},
       {:phoenix_html, "~> 2.9"},
       {:poison, "~> 2.2 or ~> 3.0"}
     ]

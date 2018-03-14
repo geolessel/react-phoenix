@@ -9,6 +9,7 @@ defmodule ReactPhoenix do
   As of v0.4.0, please use `ReactPhoenix.ClientSide.react_component/2` instead. Provided for backward
   compatability for versions < 0.4.0.
   """
+  @deprecated "Use ReactPhoenix.ClientSide.react_component"
   def react_component(name, props \\ %{}),
     do: ReactPhoenix.ClientSide.react_component(name, props)
 
@@ -18,6 +19,7 @@ defmodule ReactPhoenix do
   As of v0.4.0, please use `ReactPhoenix.ClientSide.react_component/3` instead. Provided for backward
   compatability for versions < 0.4.0.
   """
+  @deprecated "Use ReactPhoenix.ClientSide.react_component"
   def react_component(name, props, opts),
     do: ReactPhoenix.ClientSide.react_component(name, props, opts)
 end
