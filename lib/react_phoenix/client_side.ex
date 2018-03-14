@@ -25,6 +25,7 @@ defmodule ReactPhoenix.ClientSide do
   The resulting `<div>` tag is formatted specifically for the included javascript
   helper to then turn into your named React component.
   """
+  @spec react_component(name :: String.t()) :: Phoenix.HTML.safe()
   def react_component(name), do: react_component(name, %{})
 
   @doc """
@@ -43,6 +44,7 @@ defmodule ReactPhoenix.ClientSide do
   The resulting `<div>` tag is formatted specifically for the included javascript
   helper to then turn into your named React component and then pass in the props specified.
   """
+  @spec react_component(name :: String.t(), props :: list | map) :: Phoenix.HTML.safe()
   def react_component(name, props) when is_list(props) do
     react_component(name, Enum.into(props, %{}))
   end
@@ -66,15 +68,17 @@ defmodule ReactPhoenix.ClientSide do
 
   ```
   <%= ReactPhoenix.ClientSide.react_component(
-        "MyComponent",
-        %{language: "elixir", awesome: true},
-        target_id: "react-div"
+        "MyComponent",                        # <- component name
+        %{language: "elixir", awesome: true}, # <- props
+        target_id: "react-div"                # <- options
       ) %>
   ```
 
   The resulting `<div>` tag is formatted specifically for the included javascript
   helper to then turn into your named React component and then pass in the props specified.
   """
+  @spec react_component(name :: String.t(), props :: map, opts :: [target_id: String.t()]) ::
+          Phoenix.HTML.safe()
   def react_component(name, props, opts) when is_map(props) do
     props = Poison.encode!(props)
 
