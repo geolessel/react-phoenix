@@ -30,7 +30,7 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.5.1"}]
+  [{:react_phoenix, "~> 0.5.2"}]
 end
 ```
 
@@ -130,7 +130,7 @@ Once installed, you can use `react_component` in your views by:
 
 1. Making sure that the component you'd like rendered is in the global namespace.
    You can do that in `app.js` like this (for example):
-   
+
    ```javascript
    import MyComponent from "./components/my_component"
    window.Components = {
@@ -151,7 +151,7 @@ Once installed, you can use `react_component` in your views by:
    <span id="my-react-span"><%= @react_html %></span>
    <%= ReactPhoenix.ClientSide.react_component("Components.Characters", %{people: people}, target_id: "my-react-span") %>
    ```
-   
+
    This will render a special `div` element in your html output that will then be recognized by the
    javascript helper as a div that should be turned into a React component. It will then render the
    named component in that `div` (or a different element specified by ID via the `target_id` option).
@@ -173,5 +173,5 @@ rendering is likely all you'll need for now.
 
 This package is heavily inspired by the [react-rails](https://github.com/reactjs/react-rails) project.
 
-For more detailed documentation, check out the hex docs at 
+For more detailed documentation, check out the hex docs at
 [https://hexdocs.pm/react_phoenix](https://hexdocs.pm/react_phoenix)
