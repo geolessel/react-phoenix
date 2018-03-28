@@ -76,14 +76,41 @@ defmodule ReactPhoenix.ClientSide do
 
   The resulting `<div>` tag is formatted specifically for the included javascript
   helper to then turn into your named React component and then pass in the props specified.
+
+  ## Options
+
+  You can pass a Keyword list of options that controls the rendering of the final html element
+  that the react component will be rendered into.
+
+  * `target_id` - If you have a rendered html element already on your page with a unique `id`
+    attribute, this will render your react component into _that_ already-existing element
+    instead of creating one of its own. The default is an empty string, which will cause it
+    to render into its own created element.
+  * `html_element` - By default, `ReactPhoenix.ClientSide.react_component/3` will create a
+    `div` for output in your template. If you'd rather use a different element (`span`, `ul`, etc.),
+    you can specify it here as an atom (e.g. `:span`, `:ul`, etc.).
+
+  Anything else you pass in will be further passed directly to the html element it
+  creates as attributes. This allows you more control over the element. Some useful examples
+  of what you would specify are `class`, `id`, `style`, etc.
   """
-  @spec react_component(name :: String.t(), props :: map, opts :: [target_id: String.t()]) ::
+  @spec react_component(name :: String.t(), props :: map, opts :: list()) ::
           Phoenix.HTML.safe()
   def react_component(name, props, opts) when is_map(props) do
     props = Jason.encode!(props)
 
-    content_tag(:div, "", [
-      {:data, [react_class: name, react_props: props, react_target_id: opts[:target_id]]}
-    ])
+    {html_element, opts} = Keyword.pop(opts, :html_element, :div)
+    {target_id, opts} = Keyword.pop(opts, :target_id, "")
+
+    content_tag(
+      html_element,
+      "",
+      Keyword.merge(
+        [
+          {:data, [react_class: name, react_props: props, react_target_id: target_id]}
+        ],
+        opts
+      )
+    )
   end
 end
