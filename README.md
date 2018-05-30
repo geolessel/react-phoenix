@@ -21,8 +21,8 @@ switching over to a different system.
 ## Installation in 4 (or 5) EASY STEPS!
 
 This package is meant to be quick and painless to install into your Phoenix application.
-It is a thin wrapper to call the React render function from your Phoenix template, it assumes you already have
-React project set up separately.
+It is a thin wrapper to call the React render function from your Phoenix template and
+assumes you already have React in your project.
 
 
 ### 1. Declare the dependency
@@ -32,7 +32,7 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:react_phoenix, "~> 0.5.2"}]
+  [{:react_phoenix, "~> 0.6.0"}]
 end
 ```
 
