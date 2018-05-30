@@ -21,6 +21,8 @@ switching over to a different system.
 ## Installation in 4 (or 5) EASY STEPS!
 
 This package is meant to be quick and painless to install into your Phoenix application.
+It is a thin wrapper to call the React render function from your Phoenix template, it assumes you already have
+React project set up separately.
 
 
 ### 1. Declare the dependency
@@ -52,7 +54,8 @@ the dependencies section. It might look like this:
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
-
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-phoenix": "file:../deps/react_phoenix" <-- ADD THIS!
   },
   ...
