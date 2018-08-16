@@ -11,6 +11,15 @@ with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
 package can make getting React into your application much faster than
 switching over to a different system.
 
+## Using Phoenix >= 1.4 or Webpack?
+
+Phoenix version 1.4 will switch from using Brunch to Webpack for asset compliation.
+This README is written for getting started with Brunch and Phoenix 1.3. Once Phoenix
+1.4 is officially released, this README will be updated with instructions on how to
+get set up with Webpack. Until then, you can use
+[the webpack branch](https://github.com/geolessel/react-phoenix/tree/webpack) which
+has an updated README to help you get started with react-phoenix and Webpack.
+
 
 > Note regarding Phoenix versions < 1.3
 >
