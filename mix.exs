@@ -1,7 +1,7 @@
 defmodule ReactPhoenix.Mixfile do
   use Mix.Project
 
-  @version "1.0.0"
+  @version "1.0.1"
   @source_url "https://github.com/geolessel/react-phoenix"
 
   def project do
@@ -32,9 +32,9 @@ defmodule ReactPhoenix.Mixfile do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:dialyxir, ">= 0.5", only: :dev},
+      {:dialyxir, "~> 0.5", only: :dev},
       {:phoenix_html, "~> 2.11"},
-      {:poison, "~> 4.0"}
+      {:poison, "~> 3.0 or ~> 4.0"}
     ]
   end
 
