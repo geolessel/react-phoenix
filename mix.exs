@@ -19,7 +19,7 @@ defmodule ReactPhoenix.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger, :phoenix_html, :poison]]
+    [extra_applications: [:logger, :phoenix_html, :jason]]
   end
 
   def description do
@@ -34,7 +34,7 @@ defmodule ReactPhoenix.Mixfile do
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:dialyxir, ">= 0.5.0", only: :dev},
       {:phoenix_html, "~> 2.11"},
-      {:poison, "~> 4.0"}
+      {:jason, "~> 1.1"}
     ]
   end
 

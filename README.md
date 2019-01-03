@@ -81,7 +81,17 @@ Since we want React and would like to write JSX in our app, we need
 to make sure we get the packages brunch needs in order to compile our files.
 
 ```
-npm install react react-dom babel-preset-env babel-preset-react --save
+# using npm
+> npm install react react-dom --save
+> npm @babel/preset-env @babel/preset-react --save-dev
+```
+
+or
+
+```
+# using yarn
+> yarn add react react-dom
+> yarn add --dev @babel/preset-env @babel/preset-react
 ```
 
 We also need to activate those presets from the `assets/.babelrc` file:
@@ -90,8 +100,8 @@ We also need to activate those presets from the `assets/.babelrc` file:
 // Configure your plugins
 {
   "presets": [
-    "env",
-    "react" // <-- ADD THIS!
+    "@babel/preset-env",
+    "@babel/preset-react" // <-- ADD THIS!
   ]
 }
 ```
