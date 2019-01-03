@@ -25,7 +25,7 @@ defmodule ReactPhoenix.Mixfile do
   def description do
     """
     A helper library for easily rendering React components in
-    Phoenix projects. Built to work out of the box with brunch.
+    Phoenix projects. Built to work out of the box with Webpack.
     """
   end
 
