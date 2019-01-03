@@ -6,15 +6,11 @@
 Functions to make rendering React.js components easy in Phoenix.
 
 Combined with the javascript also included in this package, rendering React
-components in your Phoenix views is now much easier. Using the Phoenix default
-of Webpack, this package can make getting React into your application much
-faster than switching over to a different system.
+components in your Phoenix views is now much easier. The module was built
+with Brunch in mind (vs Webpack). Since Phoenix uses Brunch by default, this
+package can make getting React into your application much faster than
+switching over to a different system.
 
-> Note regarding Phoenix version 1.3
->
-> Phoenix 1.3 and earlier use Brunch by default instead of Webpack for asset compilation.
-> The setup for apps using Brunch is different than apps using Webpack. If you'd like to
-> read the old guide for 1.3/Brunch, you can read the [Phoenix 1.3 README](README-phoenix-1.3.md).
 
 > Note regarding Phoenix versions < 1.3
 >
@@ -36,16 +32,14 @@ dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [
-    {:react_phoenix, "~> 1.0.0"}
-  ]
+  [{:react_phoenix, "~> 0.6.0"}]
 end
 ```
 
 After adding to your mix file, run:
 
 ```
-mix deps.get
+> mix deps.get
 ```
 
 ### 2. Add the javascript dependency to package.json
@@ -71,7 +65,7 @@ the dependencies section. It might look like this:
 Then run (from your `assets` directory)
 
 ```
-npm install
+> npm install
 ```
 
 
@@ -81,19 +75,22 @@ Since we want React and would like to write JSX in our app, we need
 to make sure we get the packages brunch needs in order to compile our files.
 
 ```
-npm install react react-dom babel-preset-env babel-preset-react --save
+> npm install react babel-preset-env babel-preset-react --save
 ```
 
-We also need to activate those presets from the `assets/.babelrc` file:
+We also need to activate those presets from our `assets/brunch-config.js` file:
 
 ```js
+// ...
 // Configure your plugins
-{
-  "presets": [
-    "env",
-    "react" // <-- ADD THIS!
-  ]
-}
+plugins: {
+  babel: {
+    presets: ["env", "react"], // <-- ADD THIS!
+    // Do not use ES6 compiler in vendor code
+    ignore: [/vendor/]
+  }
+},
+// ...
 ```
 
 ### 4. Import and initialize the javascript helper
@@ -165,7 +162,14 @@ Once installed, you can use `react_component` in your views by:
 
 ## What about server-side rendering?
 
-I couldn't quite get this working with Brunch, but I hope to have time to look at it again with Webpack.
+Server-side rendering is a bit of a bear to get right with brunch. In fact, there was a previous version
+([0.4.3](https://github.com/geolessel/react-phoenix/tree/v0.4.3)) of
+`react-phoenix` that included an attempt at server-side rendering. It worked locally for me, but only after many
+attempts to get it right. In the end, there was a specific set of hand-wavy things you needed to do to get it working
+and I removed all the server-side code from the master branch for now.
+
+I may have some time freed up in the future to attempt to tackle it again. But for the simplicity of installation and usage, client-side
+rendering is likely all you'll need for now.
 
 
 ## Documentation and other stuff
