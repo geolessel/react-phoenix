@@ -50,7 +50,7 @@ defmodule ReactPhoenix.ClientSide do
   end
 
   def react_component(name, props) when is_map(props) do
-    props = Poison.encode!(props)
+    props = Jason.encode!(props)
     content_tag(:div, "", [{:data, [react_class: name, react_props: props]}])
   end
 
@@ -80,7 +80,7 @@ defmodule ReactPhoenix.ClientSide do
   @spec react_component(name :: String.t(), props :: map, opts :: [target_id: String.t()]) ::
           Phoenix.HTML.safe()
   def react_component(name, props, opts) when is_map(props) do
-    props = Poison.encode!(props)
+    props = Jason.encode!(props)
 
     content_tag(:div, "", [
       {:data, [react_class: name, react_props: props, react_target_id: opts[:target_id]]}

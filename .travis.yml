@@ -9,11 +9,11 @@ install:
   - mix deps.get
   - npm install
 elixir:
-  - 1.6.3
+  - 1.7.4
 
 matrix:
   include:
+    - elixir: 1.7
     - elixir: 1.6
     - elixir: 1.5
     - elixir: 1.4
-    - elixir: 1.3
