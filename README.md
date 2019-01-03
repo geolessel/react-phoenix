@@ -125,15 +125,17 @@ into your `lib/APPNAME_web.ex` views section. It might look like this:
 ```elixir
 def view do
   quote do
-    use Phoenix.View, root: "web/templates"
+    use Phoenix.View,
+      root: "web/templates",
+      namespace: MyPhoenixApp
 
-    import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
+    import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
     use Phoenix.HTML
 
-    import MyPhoenixApp.Router.Helpers
     import MyPhoenixApp.ErrorHelpers
     import MyPhoenixApp.Gettext
+    alias MyPhoenixApp.Router.Helpers, as: Routes
 
     import ReactPhoenix.ClientSide # <-- ADD THIS!
   end
