@@ -1,7 +1,7 @@
 defmodule ReactPhoenixTest do
   use ExUnit.Case
   doctest ReactPhoenix
-  import ReactPhoenix
+  import ReactPhoenix.ClientSide
 
   test "react_component returns a safe tuple" do
     assert {:safe, _} = react_component("test")
