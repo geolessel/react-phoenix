@@ -10,16 +10,11 @@ components in your Phoenix views is now much easier. Using the Phoenix default
 of Webpack, this package can make getting React into your application much
 faster than switching over to a different system.
 
-> Note regarding Phoenix version 1.3
+> Note regarding Phoenix versions <= 1.3
 >
-> Phoenix 1.3 and earlier use Brunch by default instead of Webpack for asset compilation.
+> Phoenix versions 1.3 and earlier use Brunch by default instead of Webpack for asset compilation.
 > The setup for apps using Brunch is different than apps using Webpack. If you'd like to
 > read the old guide for 1.3/Brunch, you can read the [Phoenix 1.3 README](README-phoenix-1.3.md).
-
-> Note regarding Phoenix versions < 1.3
->
-> This README is written as a guide for Phoenix apps running Phoenix >= 1.3. If you are using a
-> version of Phoenix below version 1.3, you can check out the [Phoenix 1.2 README](README-phoenix-1.2.md).
 
 
 ## Installation in 4 (or 5) EASY STEPS!
@@ -74,6 +69,12 @@ Then run (from your `assets` directory)
 npm install
 ```
 
+or
+
+```
+yarn
+```
+
 
 ### 3. Make sure React and Babel presets are installed
 
@@ -82,16 +83,16 @@ to make sure we get the packages brunch needs in order to compile our files.
 
 ```
 # using npm
-> npm install react react-dom --save
-> npm @babel/preset-env @babel/preset-react --save-dev
+npm install react react-dom --save
+npm install @babel/preset-env @babel/preset-react --save-dev
 ```
 
 or
 
 ```
 # using yarn
-> yarn add react react-dom
-> yarn add --dev @babel/preset-env @babel/preset-react
+yarn add react react-dom
+yarn add --dev @babel/preset-env @babel/preset-react
 ```
 
 We also need to activate those presets from the `assets/.babelrc` file:
