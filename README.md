@@ -75,6 +75,25 @@ or
 yarn
 ```
 
+Given we have linked the `react-phoenix` javascript dependency locally from your
+Phoenix project's `deps` folder, we should add webpack aliases for react and react-dom
+to your `assets/webpack.config.js`:
+
+```js
+module.exports = (env, options) => ({
+  ...
+  // ADD THIS BLOCK ˅˅˅
+  resolve: {
+    alias: {
+      react: path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom')
+    }
+  }
+  // ADD THIS BLOCK ^^^
+  ...
+});
+
+```
 
 ### 3. Make sure React and Babel presets are installed
 
