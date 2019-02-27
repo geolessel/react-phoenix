@@ -2,7 +2,7 @@
   "name": "react-phoenix",
   "version": "1.0.0",
   "scripts": {
-    "release": "node ./node_modules/babel-cli/bin/babel src/react_phoenix.js | node ./node_modules/uglify-js/bin/uglifyjs - --mangle --compress --output priv/js/react_phoenix.js"
+    "release": "node ./node_modules/.bin/babel src/react_phoenix.js | node ./node_modules/uglify-js/bin/uglifyjs - --mangle --compress --output priv/js/react_phoenix.js"
   },
   "repository": {
     "type": "git",
@@ -20,12 +20,12 @@
   ],
   "homepage": "https://github.com/geolessel/react-phoenix#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "uglify-js": "^2.8.29"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": ">=15",
     "react-dom": ">=15"
