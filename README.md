@@ -75,9 +75,10 @@ or
 yarn
 ```
 
-Given we have linked the `react-phoenix` javascript dependency locally from your
-Phoenix project's `deps` folder, we should add webpack aliases for react and react-dom
-to your `assets/webpack.config.js`:
+#### `npm` users
+`npm` unfortunately needs an extra bit of configuration to make it happy. Add the following block to your
+`assets/webpack.config.js` file. If you use `yarn` to manage your dependencies, this extra bit of
+configuration should not be necessary.
 
 ```js
 module.exports = (env, options) => ({
