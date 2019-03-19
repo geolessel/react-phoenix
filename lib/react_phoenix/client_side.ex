@@ -83,7 +83,8 @@ defmodule ReactPhoenix.ClientSide do
     props = Jason.encode!(props)
 
     content_tag(:div, "", [
-      {:data, [react_class: name, react_props: props, react_target_id: opts[:target_id]]}
+      {:data, [react_class: name, react_props: props, react_target_id: opts[:target_id]]} 
+      | Keyword.delete(opts, :target_id)
     ])
   end
 end
