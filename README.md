@@ -75,6 +75,26 @@ or
 yarn
 ```
 
+#### `npm` users
+`npm` unfortunately needs an extra bit of configuration to make it happy. Add the following block to your
+`assets/webpack.config.js` file. If you use `yarn` to manage your dependencies, this extra bit of
+configuration should not be necessary.
+
+```js
+module.exports = (env, options) => ({
+  ...
+  // ADD THIS BLOCK ˅˅˅
+  resolve: {
+    alias: {
+      react: path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom')
+    }
+  }
+  // ADD THIS BLOCK ^^^
+  ...
+});
+
+```
 
 ### 3. Make sure React and Babel presets are installed
 
