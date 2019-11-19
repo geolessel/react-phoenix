@@ -1,7 +1,7 @@
 defmodule ReactPhoenix.Mixfile do
   use Mix.Project
 
-  @version "1.0.1"
+  @version "1.1.0"
   @source_url "https://github.com/geolessel/react-phoenix"
 
   def project do
