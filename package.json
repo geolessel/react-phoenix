@@ -1,6 +1,6 @@
 {
   "name": "react-phoenix",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "scripts": {
     "release": "node ./node_modules/.bin/babel src/react_phoenix.js | node ./node_modules/uglify-js/bin/uglifyjs - --mangle --compress --output priv/js/react_phoenix.js"
   },
