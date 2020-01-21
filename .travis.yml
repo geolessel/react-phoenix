@@ -13,6 +13,8 @@ elixir:
 
 matrix:
   include:
+    - elixir: 1.9
+    - elixir: 1.8
     - elixir: 1.7
     - elixir: 1.6
     - elixir: 1.5
