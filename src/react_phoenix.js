@@ -8,7 +8,8 @@ export default class ReactPhoenix {
       const targetId = document.getElementById(e.dataset.reactTargetId)
       const targetDiv = targetId ? targetId : e
       const reactProps = e.dataset.reactProps ? e.dataset.reactProps : "{}"
-      const reactElement = React.createElement(eval(e.dataset.reactClass), JSON.parse(reactProps))
+      const reactClass = Array.prototype.reduce.call(e.dataset.reactClass.split('.'), (acc, el) => { return acc[el] }, window);
+      const reactElement = React.createElement(reactClass, JSON.parse(reactProps))
       ReactDOM.render(reactElement, targetDiv)
     })
   }
