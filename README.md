@@ -75,6 +75,16 @@ or
 yarn
 ```
 
+#### `yarn` users
+If you face the following error using `yarn`:
+```
+Error: "You may need an appropriate loader to handle this file type"
+```
+You may need to add the below to your `assets/webpack.config.js` file.
+```
+{ test: /\.jsx$/, use: { loader: 'babel-loader' } }
+```
+
 #### `npm` users
 `npm` unfortunately needs an extra bit of configuration to make it happy. Add the following block to your
 `assets/webpack.config.js` file. If you use `yarn` to manage your dependencies, this extra bit of
