@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/geolessel/react-phoenix.svg?branch=master)](https://travis-ci.org/geolessel/react-phoenix)
 [![Hex.pm](https://img.shields.io/hexpm/v/react_phoenix.svg)](https://hex.pm/packages/react_phoenix)
 
-Functions to make rendering React.js components easy in Phoenix.
+Functions to make rendering React.js components easy in Phoenix&mdash;now
+with LiveView support!
 
 Combined with the javascript also included in this package, rendering React
 components in your Phoenix views is now much easier. Using the Phoenix default
@@ -146,6 +147,26 @@ following line:
 import "react-phoenix"
 ```
 
+#### If you are using LiveView
+
+If you are rendering React components in LiveView, you need to take the
+extra step of setting up the LiveView JS hooks. Thankfully, this does
+not take much.
+
+In your main application javascript file (usually `assets/js/app.js`), add
+(or modify) the following:
+
+```javascript
+import ReactPhoenix from "react-phoenix"
+
+// Define a `hooks` variable to keep all our defined LiveView hooks:
+let hooks = { ReactPhoenix }
+
+// Use the original LiveSocket constructor, but pass in our hooks
+// param ----------------------------------- here -> | <- here
+let liveSocket = new LiveSocket("/live", Socket, { hooks, params: { _csrf_token: csrfToken } })
+```
+
 ### 5. (optional) Import the module into your views for less typing
 
 If you'd like to just call `react_component(...)` in your views instead of the full
@@ -205,6 +226,14 @@ Once installed, you can use `react_component` in your views by:
    javascript helper as a div that should be turned into a React component. It will then render the
    named component in that `div` (or a different element specified by ID via the `target_id` option).
 
+3. If you are using LiveView, there will be some extra props passed into
+your component that you can utilize: `handleEvent` and `pushEvent`.
+
+   - Using `handleEvent`, you can respond to events from the server
+   - Using `pushEvent`, you can push events to the server
+
+   Full information about these functions are available in the [LiveView documentation](https://hexdocs.pm/phoenix_live_view/0.14.8/js-interop.html#client-hooks)
+
 
 ## What about server-side rendering?
 
@@ -214,6 +243,8 @@ I couldn't quite get this working with Brunch, but I hope to have time to look a
 ## Documentation and other stuff
 
 This package is heavily inspired by the [react-rails](https://github.com/reactjs/react-rails) project.
+
+The LiveView implementation drew inspiration from [phoenix_live_react](https://github.com/fidr/phoenix_live_react).
 
 For more detailed documentation, check out the hex docs at
 [https://hexdocs.pm/react_phoenix](https://hexdocs.pm/react_phoenix)
