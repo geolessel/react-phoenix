@@ -43,6 +43,9 @@ defmodule ReactPhoenix.ClientSide do
 
   The resulting `<div>` tag is formatted specifically for the included javascript
   helper to then turn into your named React component and then pass in the props specified.
+
+  Since a unique `id` is required for LiveView to track its state, a random numeric
+  id is assigned.
   """
   @spec react_component(name :: String.t(), props :: list | map) :: Phoenix.HTML.safe()
   def react_component(name, props) when is_list(props) do
@@ -51,7 +54,13 @@ defmodule ReactPhoenix.ClientSide do
 
   def react_component(name, props) when is_map(props) do
     props = Jason.encode!(props)
-    content_tag(:div, "", [{:data, [react_class: name, react_props: props]}])
+
+    content_tag(:div, "", [
+      {:data, [react_class: name, react_props: props]},
+      id: :rand.uniform_real(),
+      phx_hook: "ReactPhoenix",
+      phx_update: "ignore"
+    ])
   end
 
   @doc """
@@ -77,6 +86,9 @@ defmodule ReactPhoenix.ClientSide do
   The resulting `<div>` tag is formatted specifically for the included javascript
   helper to then turn into your named React component and then pass in the props specified.
 
+  Since a unique `id` is required for LiveView to track its state, a random numeric
+  id is assigned.
+
   ## Options
 
   You can pass a Keyword list of options that controls the rendering of the final html element
@@ -98,16 +110,20 @@ defmodule ReactPhoenix.ClientSide do
           Phoenix.HTML.safe()
   def react_component(name, props, opts) when is_map(props) do
     props = Jason.encode!(props)
+    id = :rand.uniform_real()
 
     {html_element, opts} = Keyword.pop(opts, :html_element, :div)
-    {target_id, opts} = Keyword.pop(opts, :target_id, "")
+    {target_id, opts} = Keyword.pop(opts, :target_id, id)
 
     content_tag(
       html_element,
       "",
       Keyword.merge(
         [
-          {:data, [react_class: name, react_props: props, react_target_id: target_id]}
+          {:data, [react_class: name, react_props: props, react_target_id: target_id]},
+          id: id,
+          phx_hook: "ReactPhoenix",
+          phx_update: "ignore"
         ],
         opts
       )
