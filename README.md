@@ -33,7 +33,7 @@ dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:react_phoenix, "~> 1.2"}
+    {:react_phoenix, "~> 1.3.0-rc.1"}
   ]
 end
 ```
