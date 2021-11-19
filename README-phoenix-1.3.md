@@ -1,4 +1,4 @@
-# ReactPhoenix
+# ReactPhoenix for Phoenix < 1.4
 
 [![Build Status](https://travis-ci.org/geolessel/react-phoenix.svg?branch=master)](https://travis-ci.org/geolessel/react-phoenix)
 [![Hex.pm](https://img.shields.io/hexpm/v/react_phoenix.svg)](https://hex.pm/packages/react_phoenix)
