@@ -7,7 +7,7 @@
   "makeup_elixir": {:hex, :makeup_elixir, "0.13.0", "be7a477997dcac2e48a9d695ec730b2d22418292675c75aa2d34ba0909dcdeda", [:mix], [{:makeup, "~> 0.8", [hex: :makeup, repo: "hexpm", optional: false]}], "hexpm", "adf0218695e22caeda2820eaba703fa46c91820d53813a2223413da3ef4ba515"},
   "mime": {:hex, :mime, "1.3.1", "30ce04ab3175b6ad0bdce0035cba77bba68b813d523d1aac73d9781b4d193cf8", [:mix], [], "hexpm"},
   "nimble_parsec": {:hex, :nimble_parsec, "0.5.0", "90e2eca3d0266e5c53f8fbe0079694740b9c91b6747f2b7e3c5d21966bba8300", [:mix], [], "hexpm", "5c040b8469c1ff1b10093d3186e2e10dbe483cd73d79ec017993fb3985b8a9b3"},
-  "phoenix_html": {:hex, :phoenix_html, "3.0.3", "32812d70841c7e975e01edb591989b2b002b69797db1005b8d0adc1fe717be30", [:mix], [{:plug, "~> 1.5", [hex: :plug, repo: "hexpm", optional: true]}], "hexpm", "e8152ae9e8c60705659761edb8d8c4bb7e29130a9b0803ec1854fe137ec62dde"},
+  "phoenix_html": {:hex, :phoenix_html, "3.0.4", "232d41884fe6a9c42d09f48397c175cd6f0d443aaa34c7424da47604201df2e1", [:mix], [{:plug, "~> 1.5", [hex: :plug, repo: "hexpm", optional: true]}], "hexpm", "ce17fd3cf815b2ed874114073e743507704b1f5288bb03c304a77458485efc8b"},
   "plug": {:hex, :plug, "1.7.1", "8516d565fb84a6a8b2ca722e74e2cd25ca0fc9d64f364ec9dbec09d33eb78ccd", [:mix], [{:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}, {:plug_crypto, "~> 1.0", [hex: :plug_crypto, repo: "hexpm", optional: false]}], "hexpm"},
   "plug_crypto": {:hex, :plug_crypto, "1.0.0", "18e49317d3fa343f24620ed22795ec29d4a5e602d52d1513ccea0b07d8ea7d4d", [:mix], [], "hexpm"},
 }
