@@ -54,7 +54,7 @@ defmodule ReactPhoenix.Mixfile do
       source_url: @source_url,
       homepage_url: "http://reactphoenix.com",
       main: "readme",
-      extras: ["README.md"]
+      extras: ["README.md", "README-phoenix-1.3.md", "README-phoenix-1.2.md"]
     ]
   end
 end
