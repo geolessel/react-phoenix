@@ -33,7 +33,7 @@ defmodule ReactPhoenix.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:dialyxir, ">= 0.5.0", only: :dev},
-      {:phoenix_html, "~> 2.11 or ~> 3.0"},
+      {:phoenix_live_view, ">= 0.18.0"},
       {:jason, "~> 1.1"}
     ]
   end

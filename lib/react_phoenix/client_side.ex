@@ -9,7 +9,7 @@ defmodule ReactPhoenix.ClientSide do
   switching over to a different system.
   """
 
-  import Phoenix.HTML.Tag
+  import Phoenix.Component
 
   @doc """
   Generate a div containing the named React component with no props or options.
@@ -50,8 +50,12 @@ defmodule ReactPhoenix.ClientSide do
   end
 
   def react_component(name, props) when is_map(props) do
-    props = Jason.encode!(props)
-    content_tag(:div, "", [{:data, [react_class: name, react_props: props]}])
+    assigns = %{:props => Jason.encode!(props), :name => name}
+
+    ~H"""
+    <div data-react-class={@name} data-react-props={@props} ></div>
+    """
+    |> Phoenix.HTML.html_escape()
   end
 
   @doc """
@@ -102,15 +106,17 @@ defmodule ReactPhoenix.ClientSide do
     {html_element, opts} = Keyword.pop(opts, :html_element, :div)
     {target_id, opts} = Keyword.pop(opts, :target_id, "")
 
-    content_tag(
-      html_element,
-      "",
-      Keyword.merge(
-        [
-          {:data, [react_class: name, react_props: props, react_target_id: target_id]}
-        ],
-        opts
-      )
-    )
+    assigns = %{
+      html_element: html_element,
+      props: props,
+      name: name,
+      target_id: target_id,
+      opts: opts
+    }
+
+    ~H"""
+    <.dynamic_tag {@opts} name={@html_element} data-react-class={@name} data-react-props={@props} data-react-target-id={@target_id} ></.dynamic_tag>
+    """
+    |> Phoenix.HTML.html_escape()
   end
 end
